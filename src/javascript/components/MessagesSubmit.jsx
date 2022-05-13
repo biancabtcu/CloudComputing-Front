@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import {LANGUAGES_ARRAY} from '../utils/constants';
+
 
 const handleMessageSend = async (e) =>{
 const button =e.target;
@@ -11,7 +11,7 @@ const messageContent=document.getElementById('messageContent').value;
 
 try{
 const response = await axios.post(
-  `${process.env.REACT_APP_API_URL}/messages/foreign`,
+  `${process.env.REACT_APP_API_URL}/messages/send`,
   {
       language,
       senderName,
@@ -24,7 +24,7 @@ const response = await axios.post(
 console.log(response)
 
 if(response){
-    alert(`\nMessage sent: ${response.data.translationData.translatedText}`)
+    alert(`\nMessage sent`)
 }
 }
 catch(error){
@@ -57,17 +57,14 @@ function MessagesSubmit() {
                     placeholder={'Say hello!'} />
             </form>
 
-            {
-                LANGUAGES_ARRAY.map((language,index)=>
+            
                     <button 
-                    key={index}
                     className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded m-2 capitalize'
-                    value={language}
                     onClick={handleMessageSend}
                     >
-                        {language.toLowerCase()}
-                    </button>)
-            }
+                    Send 
+                    </button>
+            
         </div>
     );
 }
