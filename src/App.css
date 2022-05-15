@@ -1,5 +1,12 @@
+.APP{
+  background-image: url("../public/clouds.jpg");
+  background-position: bottom;
+  background-size: cover;
+  transition: 0.4s ease;
+}
 .App {
   text-align: center;
+  
 }
 
 .App-logo {
@@ -35,4 +42,63 @@
   to {
     transform: rotate(360deg);
   }
+}
+.container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 25px;
+}
+
+.input{
+  padding:15px;
+  width:80%;
+  margin:auto;
+  border: 1px solid lightgray;
+  border-radius: 6px;
+  font-size: 16px;
+}
+
+.input:focus{
+  outline: none;
+}
+
+.weather-data {
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
+
+}
+
+.city {
+  font-size: 20px;
+  font-weight: 200;
+  font-weight: bolder;
+}
+
+.temp{
+  font-size: 40px;
+  padding: 10px;
+  border: 1px solid lightgray;
+  border-radius: 12px;
+  background-color: white;
+
+}
+
+.weather{
+  font-size: 20px;
+  font-weight: 200;
+  font-weight: bolder;
+  
+}
+
+.MessagesList{
+  padding: 10px;
+  border: 1px solid lightgray;
+  border-radius: 12px;
+  background-color: white;
+  margin: 20px;
 }
