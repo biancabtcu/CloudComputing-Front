@@ -1,4 +1,5 @@
 Introducere
+
 Weather Subscription App este o aplicație web care poate fi folosită în scopul gestionării abonamentelor de prognoza meteo în funcție de locația aleasă, dar și pentru a promova serviciul propus. Această aplicație utilizează patru servicii în cloud, și anume:
 •	Google Cloud Platform – folosit pentru asigurarea unei baze de date SQL;
 •	SendGrid – folosit pentru a facilita trimiterea e-mailurilor;
