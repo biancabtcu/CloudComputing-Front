@@ -13,12 +13,15 @@ https://github.com/biancabtcu/CloudComputing-Front
 Link prezentare video: https://youtu.be/J5IfjxEhjYg
 
 Descriere problemă 
+
 Rolul acestei aplicații este de a oferi posibilitatea de a trimite prin e-mail prognoza meteo dintr-o anumită localitate unor persoane selectate care au ales să se aboneze pentru acest serviciu. Tot în cadrul aplicației putem trimite mesaje cu scop de marketing folosind e-mailul, astfel încurajând publicul țintă să foloseasca acest serviciu. 
 
 Descriere API
+
 Aplicația folosește o arhitectură de tip client-server care comunică prin protocolul HTTP. Aceasta folosește metode HTTP (GET, POST, PUT, DELETE) pentru a primi date referitoare la mesajele trimise din baza te date, pentru a crea noi înregistrari, a actualiza înregistrarile existente sau a șterge înregistrari.
 Aplicația folosește metoda GET pentru a primi toate datele despre e-mailurile trimise, pentru a le afișa apoi în secțiunea de Recently sent e-mails. Metoda POST este folosita pentru a insera noi înregistrări în baza de date folosind datele introduse în câmpurile YOUR NAME, RECEIVER MAIL și YOUR MESSAGE.
- 
+ ![image](https://user-images.githubusercontent.com/105164579/168473930-11318866-a654-48ca-a10c-ba0e471560bd.png)
+
 În vederea realizării aplicației am realizat următorii pași:
 -	Am inițializat partea de back-end;
 -	Am creat, configurat și pornit instanța bazei de dare din Google Cloud platform;
@@ -29,10 +32,14 @@ Aplicația folosește metoda GET pentru a primi toate datele despre e-mailurile 
 -	Am obținut informațiile necesare conform documentației SendGrid și am creat un API Key iar după integrarea am testat funcționalitatea în Postman;
 -	Am obținut informațiile necesare conform documentației Weather API și am creat un API Key, iar apoi am integrat si am utilizat funcționalitățile în aplicație;
 -	Dupa realizarea aplicației, am facut deploy folosind Heroku.
+
 Flux de date 
+
 Datele de intrare folosite în cadrul aplicației sunt cele introduse în câmpurile YOUR NAME, RECEIVER MAIL, YOUR MESSAGE și câmpul destinat introducerii localității dorite pentru a obține prognoza meteo. Aceste câmpuri sunt completate de către utilizator cu scopul de a trimite un e-mail. 
 Datele de iesire sunt lista cu mesaje recente din secțiunea de Recently sent e-mails și date referitoare la prognoza meteo aleasă în funcție de localitatea introdusă de utilizator.
+
 1.	Metode HTTP
+
 Metodele HTTP folosite în cadrul aplicației sunt următoarele:
 •	GET - Read (Citire) – ne ajută să primim date referitoare la toate e-mailurile trimise care se află în baza de date (senderMail, reciverMail, contentMessage);
 •	POST – Create (Creare) – ne ajută să creăm o nouă înregistrare în baza de date;
@@ -40,11 +47,15 @@ Metodele HTTP folosite în cadrul aplicației sunt următoarele:
 •	DELETE – Delete (Ștergere) – ne ajută să stergem o înregistrare din baza de date.
 Aceste operatii de tip CRUD au rolul de a trimite serverului că facem un request de tip citire/creare/actualizare/ștergere.
  
+![image](https://user-images.githubusercontent.com/105164579/168473966-163de6c1-55f2-42ac-a2fe-fc311cecee4a.png)
 
 2.	Exemple de request / response
+
+
 Get All Messages
 Request: http://localhost:8080/messages
 (Obține informațiile despre toate mesajele trimise)
+
 Response:
 {
     "messages": [
@@ -65,9 +76,12 @@ Response:
     ]
 }
 
+
 Get message by ID
+
 Request: http://localhost:8080/messages/56
 (Obține informațiile despre mesajul trimis care are Id-ul 56)
+
 Response:
 {
     "messages": [
@@ -80,9 +94,12 @@ Response:
         }
     ]
 }
+
 Delete a message by Id
+
 Request: http://localhost:8080/messages/62
 (Sterge înregistrarea cu Id-ul 62)
+
 Response:
 {
     "results": {
@@ -96,9 +113,12 @@ Response:
         "changedRows": 0
     }
 }
+
 Insert a message
+
 Request: http://localhost:8080/messages
 (Adaugă o nouă înregistrare)
+
 Response:
 {
     "results": {
@@ -112,9 +132,12 @@ Response:
         "changedRows": 0
     }
 }
+
 Update a message
+
 Request: http://localhost:8080/messages/62
 (Modifică înregistrarea cu Id-ul 62)
+
 Response:
 {
     "results": {
@@ -128,17 +151,28 @@ Response:
         "changedRows": 1
     }
 }
+
 3.	Autentificare și autorizare servicii utilizate 
+
 Pentru a utiliza cele patru serivii menționate a fost necesară crearea unui cont în cadrul fiecărei platforme utilizate.
+
 •	Google Cloud Platform 
 A fost necesară crearea instanței SQL, a user-ului și a bazei de date folosind o parolă. Apoi, pentru a autoriza rețeaua am adăugat adresa IP în Authorized Networks- Connections. 
+
 •	SendGrid 
 După crearea contului a fost necesara utilizarea 2FA (pentru sporirea securității). După această etapă am creat un API Key pe care l-am folosit pentru a oferi autorizare proiectului. Pentru a folosi Send Grid a fost necesară si validarea e-mailului pe care l-am folosit sa trimitem e-mailuri (Single Sender Verification).
+
 •	Weather API 
 Similar procesului pentru SendGrid, am creat un cont urmând apoi să creez un API Key pe care l-am folosit apoi în vederea autorizării.
+
 •	Heroku 
 Dupa procesul de creare al contului a trebuit să folosesc comanda heroku login pentru a trece prin un proces de logare pe Heroku.
 
+Capturi ecran platforme utilizate și aplicație
+
+Restul capturilor de ecran de regasesc in pdf.
+
 Referințe
+
 How to Build a Weather App with React - https://www.youtube.com/watch?v=rtR4s626ebE
 
